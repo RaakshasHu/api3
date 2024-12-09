@@ -42,9 +42,9 @@ def configure_ngrok():
 
 def update_soul_txt(public_url):
     try:
-        with open("binder2.txt", "w") as file:
+        with open("binder3.txt", "w") as file:
             file.write(public_url)
-        logging.info(f"New ngrok link saved in binder2.txt")
+        logging.info(f"New ngrok link saved in binder3.txt")
     except Exception as e:
         logging.error(f"Failed to save ngrok link: {str(e)}")
 
@@ -58,13 +58,13 @@ def update_vps_soul_txt(public_url):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh.connect(vps_ip, username=vps_user, password=vps_password)
         sftp = ssh.open_sftp()
-        with sftp.open("binder2.txt", "w") as file:
+        with sftp.open("binder3.txt", "w") as file:
             file.write(public_url)
         sftp.close()
         ssh.close()
-        logging.info("Updated binder2.txt on VPS successfully.")
+        logging.info("Updated binder3.txt on VPS successfully.")
     except Exception as e:
-        logging.error(f"Failed to update binder2.txt on VPS: {str(e)}")
+        logging.error(f"Failed to update binder3.txt on VPS: {str(e)}")
 
 def execute_command_async(command, duration):
     def run(command_id):
